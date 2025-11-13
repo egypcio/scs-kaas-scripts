@@ -5,7 +5,11 @@
 # (c) Kurt Garloff <s7n@garloff.de>, 2/2025
 # SPDX-License-Identifier: CC-BY-SA-4.0
 
-# ToDo: Magic to switch b/w apt, zypper, dnf, pacman, ...
+# TODO: Magic to switch b/w apt, zypper, dnf, pacman, ...
+#
+#   *** This script currently supports only Debian GNU/Linux
+#
+
 ARCH=$(uname -m)
 ARCH="${ARCH/x86_64/amd64}"
 OS=$(uname -s | tr A-Z a-z)
