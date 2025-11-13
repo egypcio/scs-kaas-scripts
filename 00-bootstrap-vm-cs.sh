@@ -13,6 +13,7 @@
 ARCH=$(uname -m)
 ARCH="${ARCH/x86_64/amd64}"
 OS=$(uname -s | tr A-Z a-z)
+WHOAMI=$(whoami -u)
 
 # Releases of the components to install
 CAPI_RELEASE=1.11.3         # clusterctl
@@ -99,9 +100,14 @@ Suites: $(. /etc/os-release && echo "$VERSION_CODENAME")
 Components: stable
 Signed-By: /etc/apt/keyrings/docker.asc
 EOF
+
+# Update apt cache and install docker packages
 sudo apt update
 sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
+# Check if we have ~/.bash_aliases to set
 test -e "~/.bash_aliases" || echo -e "alias ll='ls -lF'\nalias k=kubectl" > ~/.bash_aliases
-sudo groupmod -a -U `whoami` docker
-sudo systemctl enable --now docker
+
+# Add current user to the Docker group
+sudo groupmod -a -U ${WHOAMI} docker
+sudo systemctl enable --now docker.service
