@@ -57,8 +57,13 @@ install_via_download_tgz()
 	sudo mv "$3" /usr/local/bin/"$4"
 }
 
+# Create necessary directories hierarchy and touch the clouds credential file
+mkdir -p \
+    ~/.config/openstack \
+    ~/Download
+touch ~/.config/openstack/clouds.yaml
+
 # List of binaries (with their respective checksums) and packages for Debian
-mkdir -p ~/Download
 INSTCMD="apt-get install -qq -y --no-install-recommends --no-install-suggests"
 DEBIAN_PKGS=(ca-certificates curl golang jq yq git gh python3-openstackclient)
 DEBIAN_TGZS=("https://get.helm.sh/helm-v${HELM_RELEASE}-${OS}-${ARCH}.tar.gz")
