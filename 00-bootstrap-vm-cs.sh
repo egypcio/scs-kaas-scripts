@@ -10,6 +10,12 @@ ARCH=$(uname -m)
 ARCH="${ARCH/x86_64/amd64}"
 OS=$(uname -s | tr A-Z a-z)
 
+# Releases of the components to install
+CAPI_RELEASE=1.9.4          # clusterctl
+HELM_RELEASE=3.17.1         # helm
+KIND_RELEASE=0.26.0         # kind
+KUBERNETES_RELEASE=1.31.6   # kubectl
+
 # Usage: install_via_pkgmgr pkgnm [pkgnm [...]]
 install_via_pkgmgr()
 {
@@ -50,13 +56,13 @@ install_via_download_tgz()
 mkdir -p ~/Download
 INSTCMD="apt-get install -y --no-install-recommends --no-install-suggests"
 DEB12_PKGS=(docker.io golang jq yq git gh python3-openstackclient)
-DEB12_TGZS=("https://get.helm.sh/helm-v3.17.1-${OS}-${ARCH}.tar.gz")
+DEB12_TGZS=("https://get.helm.sh/helm-v${HELM_RELEASE}-${OS}-${ARCH}.tar.gz")
 DEB12_TCHK=("3b66f3cd28409f29832b1b35b43d9922959a32d795003149707fea84cbcd4469")
 DEB12_TOLD=("${OS}-${ARCH}/helm")
 DEB12_TNEW=(".")
-DEB12_BINS=("https://github.com/kubernetes-sigs/kind/releases/download/v0.26.0/kind-${OS}-${ARCH}"
-	    "https://dl.k8s.io/release/v1.31.6/bin/${OS}/${ARCH}/kubectl"
-	    "https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.9.4/clusterctl-${OS}-${ARCH}"
+DEB12_BINS=("https://github.com/kubernetes-sigs/kind/releases/download/v${KIND_RELEASE}/kind-${OS}-${ARCH}"
+	    "https://dl.k8s.io/release/v${KUBERNETES_RELEASE}/bin/${OS}/${ARCH}/kubectl"
+	    "https://github.com/kubernetes-sigs/cluster-api/releases/download/v${CAPI_RELEASE}/clusterctl-${OS}-${ARCH}"
 	)
 DEB12_BCHK=("d445b44c28297bc23fd67e51cc24bb294ae7b977712be2d4d312883d0835829b"
 	    "c46b2f5b0027e919299d1eca073ebf13a4c5c0528dd854fc71a5b93396c9fa9d"
