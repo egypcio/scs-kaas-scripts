@@ -11,10 +11,10 @@ ARCH="${ARCH/x86_64/amd64}"
 OS=$(uname -s | tr A-Z a-z)
 
 # Releases of the components to install
-CAPI_RELEASE=1.9.4          # clusterctl
+CAPI_RELEASE=1.11.3         # clusterctl
 HELM_RELEASE=4.0.0          # helm
-KIND_RELEASE=0.26.0         # kind
-KUBERNETES_RELEASE=1.31.6   # kubectl
+KIND_RELEASE=0.30.0         # kind
+KUBERNETES_RELEASE=1.34.2   # kubectl
 
 # Usage: install_via_pkgmgr pkgnm [pkgnm [...]]
 install_via_pkgmgr()
@@ -60,13 +60,15 @@ DEBIAN_TGZS=("https://get.helm.sh/helm-v${HELM_RELEASE}-${OS}-${ARCH}.tar.gz")
 DEBIAN_TCHK=("c77e9e7c1cc96e066bd240d190d1beed9a6b08060b2043ef0862c4f865eca08f")
 DEBIAN_TOLD=("${OS}-${ARCH}/helm")
 DEBIAN_TNEW=(".")
-DEBIAN_BINS=("https://github.com/kubernetes-sigs/kind/releases/download/v${KIND_RELEASE}/kind-${OS}-${ARCH}"
-	    "https://dl.k8s.io/release/v${KUBERNETES_RELEASE}/bin/${OS}/${ARCH}/kubectl"
-	    "https://github.com/kubernetes-sigs/cluster-api/releases/download/v${CAPI_RELEASE}/clusterctl-${OS}-${ARCH}"
+DEBIAN_BINS=(
+    "https://github.com/kubernetes-sigs/kind/releases/download/v${KIND_RELEASE}/kind-${OS}-${ARCH}"
+	"https://dl.k8s.io/release/v${KUBERNETES_RELEASE}/bin/${OS}/${ARCH}/kubectl"
+	"https://github.com/kubernetes-sigs/cluster-api/releases/download/v${CAPI_RELEASE}/clusterctl-${OS}-${ARCH}"
 	)
-DEBIAN_BCHK=("d445b44c28297bc23fd67e51cc24bb294ae7b977712be2d4d312883d0835829b"
-	    "c46b2f5b0027e919299d1eca073ebf13a4c5c0528dd854fc71a5b93396c9fa9d"
-	    "0c80a58f6158cd76075fcc9a5d860978720fa88860c2608bb00944f6af1e5752"
+DEBIAN_BCHK=(
+    "517ab7fc89ddeed5fa65abf71530d90648d9638ef0c4cde22c2c11f8097b8889"
+    "9591f3d75e1581f3f7392e6ad119aab2f28ae7d6c6e083dc5d22469667f27253"
+    "d65ec7a42c36e863847103d48216c3dad248b82c447a27b3b2325a61e26ead9a"
     )
 DEBIAN_BNEW=("kind" "." "clusterctl")
 
