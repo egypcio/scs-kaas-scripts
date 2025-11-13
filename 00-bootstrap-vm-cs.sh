@@ -38,7 +38,7 @@ test_sha256()
 install_via_download_bin()
 {
 	cd ~/Download
-	curl -LO "$1" || return
+	curl -s -LO "$1" || return
 	FNM="${1##*/}"
 	if ! test_sha256 "$FNM" "$2"; then echo "Checksum mismatch for ${FNM}" 1>&2; return 1; fi
 	chmod +x "$FNM"
@@ -49,7 +49,7 @@ install_via_download_bin()
 install_via_download_tgz()
 {
 	cd ~/Download
-	curl -LO "$1" || return
+	curl -s -LO "$1" || return
 	FNM="${1##*/}"
 	if ! test_sha256 "$FNM" "$2"; then echo "Checksum mismatch for ${FNM}" 1>&2; return 1; fi
 	tar xvzf "$FNM"
