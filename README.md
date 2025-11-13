@@ -41,7 +41,8 @@ any changes if you did not change any settings.
 
 > Should you be installing that manually (to get a closer and better understanding of the entire process), it may be possible that you would be presented errors related to the user not still be part of the `docker` group. To solve that you can run the scripts using `newgrp`.
 
-    - Here's how you could run scripts with `newgrp`
+    * Here's how you could run scripts with `newgrp`
+
     ```sh
     newgrp -c "bash 01-kind-cluster.sh" docker
     ```
