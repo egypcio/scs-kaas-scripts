@@ -41,11 +41,11 @@ any changes if you did not change any settings.
 
 > Should you be installing that manually (to get a closer and better understanding of the entire process), it may be possible that you would be presented errors related to the user not still be part of the `docker` group. To solve that you can run the scripts using `newgrp`.
 
-    * Here's how you could run scripts with `newgrp`
+  - Example:
 
-    ```sh
-    newgrp -c "bash 01-kind-cluster.sh" docker
-    ```
+  ```sh
+  newgrp -c "bash 01-kind-cluster.sh" docker
+  ```
 
 ### Once per OpenStack Project in which we want to install clusters (per namespace)
 * `04-cloud-secret.sh`: Create namespace and secrets for CAPO and ORC to 
