@@ -12,7 +12,7 @@ OS=$(uname -s | tr A-Z a-z)
 
 # Releases of the components to install
 CAPI_RELEASE=1.9.4          # clusterctl
-HELM_RELEASE=3.17.1         # helm
+HELM_RELEASE=4.0.0          # helm
 KIND_RELEASE=0.26.0         # kind
 KUBERNETES_RELEASE=1.31.6   # kubectl
 
@@ -57,7 +57,7 @@ mkdir -p ~/Download
 INSTCMD="apt-get install -qq -y --no-install-recommends --no-install-suggests"
 DEBIAN_PKGS=(docker.io golang jq yq git gh python3-openstackclient)
 DEBIAN_TGZS=("https://get.helm.sh/helm-v${HELM_RELEASE}-${OS}-${ARCH}.tar.gz")
-DEBIAN_TCHK=("3b66f3cd28409f29832b1b35b43d9922959a32d795003149707fea84cbcd4469")
+DEBIAN_TCHK=("c77e9e7c1cc96e066bd240d190d1beed9a6b08060b2043ef0862c4f865eca08f")
 DEBIAN_TOLD=("${OS}-${ARCH}/helm")
 DEBIAN_TNEW=(".")
 DEBIAN_BINS=("https://github.com/kubernetes-sigs/kind/releases/download/v${KIND_RELEASE}/kind-${OS}-${ARCH}"
