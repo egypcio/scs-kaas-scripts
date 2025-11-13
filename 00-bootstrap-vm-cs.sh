@@ -70,7 +70,7 @@ DEBIAN_BINS=("https://github.com/kubernetes-sigs/kind/releases/download/v${KIND_
 	"https://github.com/kubernetes-sigs/cluster-api/releases/download/v${CAPI_RELEASE}/clusterctl-${OS}-${ARCH}"
 	)
 DEBIAN_BCHK=("517ab7fc89ddeed5fa65abf71530d90648d9638ef0c4cde22c2c11f8097b8889"
-    "cf39509aa1e3d8fdf4418619170506aada2974de41c93551c1f3a75eef57c66e"
+    "c2ba72c115d524b72aaee9aab8df8b876e1596889d2f3f27d68405262ce86ca1"
     "d65ec7a42c36e863847103d48216c3dad248b82c447a27b3b2325a61e26ead9a"
     )
 DEBIAN_BNEW=("kind" "." "clusterctl")
