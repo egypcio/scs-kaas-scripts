@@ -64,13 +64,11 @@ DEBIAN_TGZS=("https://get.helm.sh/helm-v${HELM_RELEASE}-${OS}-${ARCH}.tar.gz")
 DEBIAN_TCHK=("c77e9e7c1cc96e066bd240d190d1beed9a6b08060b2043ef0862c4f865eca08f")
 DEBIAN_TOLD=("${OS}-${ARCH}/helm")
 DEBIAN_TNEW=(".")
-DEBIAN_BINS=(
-    "https://github.com/kubernetes-sigs/kind/releases/download/v${KIND_RELEASE}/kind-${OS}-${ARCH}"
+DEBIAN_BINS=("https://github.com/kubernetes-sigs/kind/releases/download/v${KIND_RELEASE}/kind-${OS}-${ARCH}"
 	"https://dl.k8s.io/release/v${KUBERNETES_RELEASE}/bin/${OS}/${ARCH}/kubectl"
 	"https://github.com/kubernetes-sigs/cluster-api/releases/download/v${CAPI_RELEASE}/clusterctl-${OS}-${ARCH}"
 	)
-DEBIAN_BCHK=(
-    "517ab7fc89ddeed5fa65abf71530d90648d9638ef0c4cde22c2c11f8097b8889"
+DEBIAN_BCHK=("517ab7fc89ddeed5fa65abf71530d90648d9638ef0c4cde22c2c11f8097b8889"
     "9591f3d75e1581f3f7392e6ad119aab2f28ae7d6c6e083dc5d22469667f27253"
     "d65ec7a42c36e863847103d48216c3dad248b82c447a27b3b2325a61e26ead9a"
     )
