@@ -19,7 +19,7 @@ WHOAMI=$(whoami)
 CAPI_RELEASE=1.11.3         # clusterctl
 HELM_RELEASE=4.0.0          # helm
 KIND_RELEASE=0.30.0         # kind
-KUBERNETES_RELEASE=1.33.6   # kubectl
+KUBERNETES_RELEASE=1.33.4   # kubectl
 
 # Usage: install_via_pkgmgr pkgnm [pkgnm [...]]
 install_via_pkgmgr()
@@ -70,7 +70,7 @@ DEBIAN_BINS=("https://github.com/kubernetes-sigs/kind/releases/download/v${KIND_
 	"https://github.com/kubernetes-sigs/cluster-api/releases/download/v${CAPI_RELEASE}/clusterctl-${OS}-${ARCH}"
 	)
 DEBIAN_BCHK=("517ab7fc89ddeed5fa65abf71530d90648d9638ef0c4cde22c2c11f8097b8889"
-    "7c7ba245770669abaf4ff49a80a367b4c33f1880bade3d6a565cc851a163d71f"
+    "cf39509aa1e3d8fdf4418619170506aada2974de41c93551c1f3a75eef57c66e"
     "d65ec7a42c36e863847103d48216c3dad248b82c447a27b3b2325a61e26ead9a"
     )
 DEBIAN_BNEW=("kind" "." "clusterctl")
