@@ -13,7 +13,7 @@
 ARCH=$(uname -m)
 ARCH="${ARCH/x86_64/amd64}"
 OS=$(uname -s | tr A-Z a-z)
-WHOAMI=$(whoami -u)
+WHOAMI=$(whoami)
 
 # Releases of the components to install
 CAPI_RELEASE=1.11.3         # clusterctl
