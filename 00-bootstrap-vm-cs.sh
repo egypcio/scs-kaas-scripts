@@ -59,7 +59,7 @@ install_via_download_tgz()
 # List of binaries (with their respective checksums) and packages for Debian
 mkdir -p ~/Download
 INSTCMD="apt-get install -qq -y --no-install-recommends --no-install-suggests"
-DEBIAN_PKGS=(docker.io golang jq yq git gh python3-openstackclient)
+DEBIAN_PKGS=(ca-certificates curl golang jq yq git gh python3-openstackclient)
 DEBIAN_TGZS=("https://get.helm.sh/helm-v${HELM_RELEASE}-${OS}-${ARCH}.tar.gz")
 DEBIAN_TCHK=("c77e9e7c1cc96e066bd240d190d1beed9a6b08060b2043ef0862c4f865eca08f")
 DEBIAN_TOLD=("${OS}-${ARCH}/helm")
@@ -87,6 +87,22 @@ done
 
 GOBIN=/tmp go install github.com/drone/envsubst/v2/cmd/envsubst@latest
 sudo mv /tmp/envsubst /usr/local/bin/
+
+# Add Docker's official GPG key
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+# Add the repository to apt sources
+sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
+Types: deb
+URIs: https://download.docker.com/linux/debian
+Suites: $(. /etc/os-release && echo "$VERSION_CODENAME")
+Components: stable
+Signed-By: /etc/apt/keyrings/docker.asc
+EOF
+sudo apt update
+sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 test -e "~/.bash_aliases" || echo -e "alias ll='ls -lF'\nalias k=kubectl" > ~/.bash_aliases
 sudo groupmod -a -U `whoami` docker
