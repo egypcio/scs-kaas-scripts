@@ -80,7 +80,11 @@ DEBIAN_BCHK=("517ab7fc89ddeed5fa65abf71530d90648d9638ef0c4cde22c2c11f8097b8889"
     )
 DEBIAN_BNEW=("kind" "." "clusterctl")
 
+# Ensure we are on a updated environment
 sudo apt-get update
+sudo apt-get upgrade -qq -y
+
+# Install required binaries and Debian packages for this KAAS setup
 install_via_pkgmgr "${DEBIAN_PKGS[@]}" || exit 1
 for i in $(seq 0 $((${#DEBIAN_TGZS[*]}-1))); do
 	install_via_download_tgz "${DEBIAN_TGZS[$i]}" "${DEBIAN_TCHK[$i]}" "${DEBIAN_TOLD[$i]}" "${DEBIAN_TNEW[$i]}" || exit 2
@@ -89,6 +93,7 @@ for i in $(seq 0 $((${#DEBIAN_BINS[*]}-1))); do
 	install_via_download_bin "${DEBIAN_BINS[$i]}" "${DEBIAN_BCHK[$i]}" "${DEBIAN_BNEW[$i]}" || exit 3
 done
 
+# Install envsubs (using Go, as that's not available as Debian package)
 GOBIN=/tmp go install github.com/drone/envsubst/v2/cmd/envsubst@latest
 sudo mv /tmp/envsubst /usr/local/bin/
 
