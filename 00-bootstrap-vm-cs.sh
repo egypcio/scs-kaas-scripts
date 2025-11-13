@@ -54,7 +54,7 @@ install_via_download_tgz()
 
 # Debian 12 (Bookworm)
 mkdir -p ~/Download
-INSTCMD="apt-get install -y --no-install-recommends --no-install-suggests"
+INSTCMD="apt-get install -qq -y --no-install-recommends --no-install-suggests"
 DEB12_PKGS=(docker.io golang jq yq git gh python3-openstackclient)
 DEB12_TGZS=("https://get.helm.sh/helm-v${HELM_RELEASE}-${OS}-${ARCH}.tar.gz")
 DEB12_TCHK=("3b66f3cd28409f29832b1b35b43d9922959a32d795003149707fea84cbcd4469")
