@@ -105,7 +105,7 @@ metadata:
     clusterctl.cluster.x-k8s.io/move: "true"
 type: addons.cluster.x-k8s.io/resource-set
 ---
-apiVersion: addons.cluster.x-k8s.io/v1beta1
+apiVersion: addons.cluster.x-k8s.io/v1beta2
 kind: ClusterResourceSet
 metadata:
   name: crs-openstack-newsecret$3
@@ -132,7 +132,7 @@ metadata:
     clusterctl.cluster.x-k8s.io/move: "true"
 type: addons.cluster.x-k8s.io/resource-set
 ---
-apiVersion: addons.cluster.x-k8s.io/v1beta1
+apiVersion: addons.cluster.x-k8s.io/v1beta2
 kind: ClusterResourceSet
 metadata:
   name: crs-openstack-secret$3
