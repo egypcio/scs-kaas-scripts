@@ -34,5 +34,7 @@ EOF
 # Install Cluster Stack Operator (CSO) with above values
 helm upgrade -i cso -n cso-system \
 	--create-namespace --values ~/tmp/cso-rbac.yaml \
+    --set octavia_ovn=true \
 	oci://registry.scs.community/cluster-stacks/cso
+
 kubectl -n cso-system rollout status deployment
