@@ -59,7 +59,11 @@ fi
 # Additional variables
 #  Compatibility with old defaults
 if ! grep CL_VARIABLES "$SET" >/dev/null 2>&1; then
-	CL_VARIABLES="apiserver_loadbalancer=octavia-ovn"
+	if test "$CS_SERIES" = "scs2"; then
+		CL_VARIABLES="apiServerLoadBalancer=octavia-ovn"
+	else
+		CL_VARIABLES="apiserver_loadbalancer=octavia-ovn"
+	fi
 fi
 #  Turn them into YAML
 if test -n "$CL_VARIABLES"; then
